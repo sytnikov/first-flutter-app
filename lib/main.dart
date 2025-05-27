@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'Flutter Home Page'),
     );
@@ -57,11 +57,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      // appBar: AppBar(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset(
+              'assets/images/fortune_cookie.png',
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -74,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: _getFortune,
               child: const Text('Get Fortune'),
-            )
+            ),
           ],
         ),
       ),
