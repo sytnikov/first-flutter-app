@@ -31,12 +31,11 @@ class Utip extends StatefulWidget {
 class _UtipState extends State<Utip> {
   @override
   Widget build(BuildContext context) {
-
     var theme = Theme.of(context);
 
     final style = theme.textTheme.titleMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
-      fontWeight: FontWeight.bold
+      fontWeight: FontWeight.bold,
     );
 
     return Scaffold(
@@ -44,24 +43,49 @@ class _UtipState extends State<Utip> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.inversePrimary,
-              borderRadius: BorderRadius.circular(18),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.inversePrimary,
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: Column(
+                children: [
+                  Text('Total per person', style: style),
+                  Text(
+                    '\$20.32',
+                    style: style.copyWith(
+                      fontSize: theme.textTheme.displaySmall?.fontSize,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                Text(
-                  'Total per person',
-                  style: style,
-                ),
-                Text('\$20.32',
-                style: style.copyWith(
-                  fontSize: theme.textTheme.displaySmall?.fontSize
-                )),
-              ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(color: theme.colorScheme.primary, width: 2),
+              ),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.attach_money),
+                      labelText: 'Bill Amount',
+                    ),
+                    keyboardType: TextInputType.number,
+                    onChanged: (String value) {
+                      print('Value: $value');
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ],
