@@ -81,8 +81,30 @@ class _UtipState extends State<Utip> {
                     ),
                     keyboardType: TextInputType.number,
                     onChanged: (String value) {
-                      print('Value: $value');
+                      // print('Value: $value');
                     },
+                  ),
+                  // Split Bill Area
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Split', style: theme.textTheme.titleMedium),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () => {},
+                            icon: const Icon(Icons.remove),
+                            color: theme.colorScheme.primary,
+                          ),
+                          Text('3', style: theme.textTheme.titleMedium),
+                          IconButton(
+                            onPressed: () => {},
+                            icon: const Icon(Icons.add),
+                            color: theme.colorScheme.primary,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
