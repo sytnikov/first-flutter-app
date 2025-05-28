@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -12,83 +11,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Utip',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Home Page'),
+      home: const Utip(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class Utip extends StatefulWidget {
+  const Utip({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Utip> createState() => _UtipState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String _currentFortune = '';
-
-  final _fortuneList = [
-    "A great change is just around the corner.",
-    "You will soon uncover a hidden truth.",
-    "Someone from your past will return unexpectedly.",
-    "A small risk will bring great reward.",
-    "Your dreams hold the answer you seek.",
-    "New paths open when old ones close.",
-    "A message will arrive when you least expect.",
-    "Listen closely—your intuition is guiding you right.",
-    "What you lost will find its way back.",
-    "This week brings clarity and fresh beginnings.",
-  ];
-
-  void _getFortune() {
-    var random = Random();
-    int fortuneIndex = random.nextInt(_fortuneList.length);
-    setState(() {
-      _currentFortune = _fortuneList[fortuneIndex];
-    });
-  }
-
+class _UtipState extends State<Utip> {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Scaffold(
-      // appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/images/fortune_cookie.png',
-              width: 200,
-              height: 200,
-              fit: BoxFit.cover,
+      appBar: AppBar(title: Text('UTip')),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.inversePrimary,
+              borderRadius: BorderRadius.circular(18),
             ),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  _currentFortune,
-                  style: Theme.of(context).textTheme.titleMedium,
+            child: Column(
+              children: [
+                Text(
+                  'Total per person',
+                  style: theme.textTheme.titleMedium,
                 ),
-              ),
+                Text('\$20.32',
+                style: theme.textTheme.displaySmall,),
+              ],
             ),
-            ElevatedButton(
-              onPressed: _getFortune,
-              child: const Text('Get Fortune'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _getFortune,
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }
